@@ -10,6 +10,7 @@
 
 std::string CleanString(const std::string &s);
 void DisplayWords(std::map<std::string, int> &in_map);
+std::ifstream GetFileStream(std::string file);
 
 bool StartPart1() {
 	std::ifstream in_file {"oz_text.txt"};	
@@ -28,7 +29,8 @@ bool StartPart1() {
 		}			
 	}
 	DisplayWords(word_map_1);
-	in_file.close();	
+	in_file.close();
+	return true;	
 };
 
 // Used for part 1
@@ -43,9 +45,18 @@ void DisplayWords(std::map<std::string, int> &in_map) {
 	}
 }
 
-void LaunchPart2() {
+bool StartPart2() {
+	std::ifstream in_file {GetFileStream("oz_text.txt")};
 
 };
+
+std::ifstream GetFileStream(std::string file) {
+	std::ifstream in_file {file};
+	if(!in_file) {
+		std::cout << "Error opening file." << std::endl;
+	}
+	return in_file;
+}
 
 std::string CleanString(const std::string &s) {
 	std::string result;
@@ -61,7 +72,7 @@ std::string CleanString(const std::string &s) {
 }
 
 int main() {
-	
+	StartPart1();	
 
 	return 0;
 }
