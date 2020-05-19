@@ -5,8 +5,11 @@
 #include <algorithm>
 #include <string>
 #include <sstream>
+#include <iomanip>
+#include <iterator>
 
 std::string CleanString(const std::string &s);
+void DisplayWords(std::map<std::string, int> &in_map);
 
 bool StartPart1() {
 	std::ifstream in_file {"oz_text.txt"};	
@@ -24,12 +27,20 @@ bool StartPart1() {
 			word_map_1[word]++; //Increment to count frequency of this word.
 		}			
 	}
+	DisplayWords(word_map_1);
 	in_file.close();	
 };
 
 // Used for part 1
-void DisplayWords(const std::map<std::string, int> &in_map) {
-	
+void DisplayWords(std::map<std::string, int> &in_map) {
+	std::cout << "Part 1" << std::endl;
+	std::cout << "--------------------------------------------------" << std::endl;
+	std::map<std::string, int>::iterator it;
+	for(it = in_map.begin(); it != in_map.end(); it++) {
+		std::cout << std::setw(30) << std::left << it->first 
+			<< it->second << std::endl;
+		
+	}
 }
 
 void LaunchPart2() {
