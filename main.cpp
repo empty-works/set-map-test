@@ -4,8 +4,11 @@
 #include <fstream>
 #include <algorithm>
 #include <string>
+#include <sstream>
 
-bool display_part_1() {
+std::string CleanString(const std::string &s);
+
+bool StartPart1() {
 	std::ifstream in_file {"oz_text.txt"};	
 	if(!in_file) {
 		std::cout << "Error opening file." << std::endl;
@@ -13,9 +16,24 @@ bool display_part_1() {
 	}
 	std::map<std::string, int> word_map_1 {};
 	std::string line {};
-	while(in_file >> line) {
-			
-	}		
+	std::string word {};
+	while(std::getline(in_file, line)) {
+		std::stringstream ss(line);
+		while(ss >> word) {
+			word = CleanString(word);
+			word_map_1[word]++; //Increment to count frequency of this word.
+		}			
+	}
+	in_file.close();	
+};
+
+// Used for part 1
+void DisplayWords(const std::map<std::string, int> &in_map) {
+	
+}
+
+void LaunchPart2() {
+
 };
 
 std::string CleanString(const std::string &s) {
@@ -30,10 +48,6 @@ std::string CleanString(const std::string &s) {
 	}
 	return result;
 }
-
-void display_part_2() {
-
-};
 
 int main() {
 	
