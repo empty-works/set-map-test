@@ -47,7 +47,19 @@ void DisplayWords(std::map<std::string, int> &in_map) {
 
 bool StartPart2() {
 	std::ifstream in_file {GetFileStream("oz_text.txt")};
-
+	std::map<std::string, std::set<int>> word_map_2;
+	std::set<int> word_set;
+	std::string line;
+	std::string word;
+	int line_num {1};
+	while(std::getline(in_file, line)) {
+		std::stringstream ss(line);
+		++line_num;
+		while(ss >> word) {
+			word = CleanString(word);
+			word_map_2[word].insert(line_num);
+		}		
+	}	
 };
 
 std::ifstream GetFileStream(std::string file) {
