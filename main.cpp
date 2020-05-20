@@ -69,7 +69,10 @@ void DisplayWords(std::map<std::string, std::set<int>> &in_map) {
 	std::cout << "--------------------------------------------------" << std::endl;
 	std::map<std::string, std::set<int>>::iterator it;
 	for(it = in_map.begin(); it != in_map.end(); it++) {
-		std::cout << std::setw(30) << std::left << it->first << std::endl;
+		std::cout << std::setw(30) << std::left << it->first << "["; 
+		for(auto &elem : it->second)
+			 	std::cout << elem << " ";
+		std::cout << "]" <<  std::endl;
 	}
 }
 
