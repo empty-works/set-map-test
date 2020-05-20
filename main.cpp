@@ -10,6 +10,7 @@
 
 std::string CleanString(const std::string &s);
 void DisplayWords(std::map<std::string, int> &in_map);
+void DisplayWords(std::map<std::string, std::set<int>> &in_map);
 std::ifstream GetFileStream(std::string file);
 
 bool StartPart1() {
@@ -62,6 +63,16 @@ bool StartPart2() {
 	}	
 };
 
+//Used for part 2
+void DisplayWords(std::map<std::string, std::set<int>> &in_map) {
+	std::cout << "Part 2" << std::endl;
+	std::cout << "--------------------------------------------------" << std::endl;
+	std::map<std::string, std::set<int>>::iterator it;
+	for(it = in_map.begin(); it != in_map.end(); it++) {
+		std::cout << std::setw(30) << std::left << it->first << std::endl;
+	}
+}
+
 std::ifstream GetFileStream(std::string file) {
 	std::ifstream in_file {file};
 	if(!in_file) {
@@ -85,6 +96,6 @@ std::string CleanString(const std::string &s) {
 
 int main() {
 	StartPart1();	
-
+	StartPart2();
 	return 0;
 }
