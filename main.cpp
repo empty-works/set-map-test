@@ -60,7 +60,8 @@ bool StartPart2() {
 			word = CleanString(word);
 			word_map_2[word].insert(line_num);
 		}		
-	}	
+	}
+	DisplayWords(word_map_2);	
 };
 
 //Used for part 2
@@ -69,7 +70,7 @@ void DisplayWords(std::map<std::string, std::set<int>> &in_map) {
 	std::cout << "--------------------------------------------------" << std::endl;
 	std::map<std::string, std::set<int>>::iterator it;
 	for(it = in_map.begin(); it != in_map.end(); it++) {
-		std::cout << std::setw(30) << std::left << it->first << "["; 
+		std::cout << std::setw(30) << std::left << it->first << "[ "; 
 		for(auto &elem : it->second)
 			 	std::cout << elem << " ";
 		std::cout << "]" <<  std::endl;
